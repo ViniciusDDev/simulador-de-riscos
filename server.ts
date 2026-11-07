@@ -36,7 +36,7 @@ app.post('/api/agent/chat', async (req: Request, res: Response) => {
   const { messages, persona, challengeContext, userConfig } = req.body;
 
   const systemInstructions = `
-Você é o Agente de Entrevistas e Desafios de Riscos Financeiros da plataforma "Simulador Agêntico de Entrevistas - Riscos & Data Science", inspirado nas exigências técnicas para Data Scientist I (Riscos e Ferramentas de Projeções) em instituições bancárias (como o Bradesco) e normas do BACEN.
+Você é o Agente de Entrevistas e Desafios de Riscos Financeiros da plataforma "Simulador Agêntico de Entrevistas - Riscos & Data Science", inspirado nas exigências técnicas para Data Scientist I (Riscos e Ferramentas de Projeções) em grandes instituições bancárias e normas do BACEN.
 
 Sua Persona Atual:
 ${persona === 'impiedoso' 
@@ -93,7 +93,7 @@ app.post('/api/agent/evaluate', async (req: Request, res: Response) => {
   const { challenge, userCodeOrAnswer, conversationHistory } = req.body;
 
   const evaluationPrompt = `
-Você é o Agente Avaliador (Juiz Técnico de Riscos Financeiros e Banca do Bradesco).
+Você é o Agente Avaliador (Juiz Técnico de Riscos Financeiros e Banca Examinadora Bancária).
 Analise a resposta técnica do candidato para a vaga de Data Scientist I - Riscos (Ferramentas de Projeções).
 
 DESAFIO:
@@ -238,7 +238,7 @@ function generateDeterministicFallbackChat(messages: any[], persona: string, con
   }
 
   if (persona === 'impiedoso') {
-    return `Entendi sua colocação, mas vamos aprofundar: em um comitê executivo de risco do Bradesco, como você defende esse número perante uma auditoria que questiona se a sua métrica KS não está sofrendo de overfitting temporal?`;
+    return `Entendi sua colocação, mas vamos aprofundar: em um comitê executivo de risco de uma instituição financeira, como você defende esse número perante uma auditoria que questiona se a sua métrica KS não está sofrendo de overfitting temporal?`;
   }
 
   return `Muito interessante a sua linha de raciocínio. Na prática de riscos financeiros, conectar a métrica estatística com a governança contábil do banco é o diferencial de um Data Scientist I. Como você conclui sua resposta?`;

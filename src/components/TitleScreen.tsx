@@ -66,7 +66,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
       </div>
       <div className="absolute top-6 right-8 text-[10px] font-mono text-sky-400/70 tracking-widest hidden sm:block flex items-center gap-2">
         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>BRADESCO & BACEN ALIGNED</span>
+        <span>BACEN REGULATION ALIGNED</span>
       </div>
       <div className="absolute bottom-6 left-8 text-[10px] font-mono text-slate-600 hidden sm:block">
         PORT 3000 // AGENTIC SIMULATOR

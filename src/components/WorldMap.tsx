@@ -66,7 +66,7 @@ export const WorldMap: React.FC<WorldMapProps> = ({
             <span aria-hidden="true">·</span>
             <span>Data Scientist I - Riscos & Projeções</span>
             <span aria-hidden="true">·</span>
-            <span>Bradesco & Instituições Reguladas</span>
+            <span>Bancos & Instituições Reguladas</span>
           </div>
 
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">

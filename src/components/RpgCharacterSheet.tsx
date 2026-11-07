@@ -131,7 +131,7 @@ ${completedChallengeIds
             </h1>
 
             <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
-              Baseada nos padrões de auditoria do Banco Central (BACEN) e nos requisitos de vagas corporativas de modelagem de risco e crédito do Bradesco.
+              Baseada nos padrões de auditoria do Banco Central (BACEN) e nos requisitos de vagas corporativas de modelagem de risco e crédito do Sistema Financeiro Nacional.
             </p>
           </div>
         </div>

@@ -617,7 +617,7 @@ export const InterviewArena: React.FC<InterviewArenaProps> = ({
                     <div className="text-xs font-mono text-purple-300 flex items-center gap-2">
                       <span>Resultado do Agente Avaliador</span>
                       <span aria-hidden="true">·</span>
-                      <span>Critérios Bradesco & BACEN</span>
+                      <span>Critérios Bancários & BACEN</span>
                     </div>
                     <h3 className="text-base font-bold text-white mt-1">
                       {evaluation.feedbackTitle}

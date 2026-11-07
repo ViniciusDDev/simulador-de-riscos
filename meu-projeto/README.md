@@ -1,6 +1,6 @@
 # 🏦 Simulador Agêntico de Entrevistas: Data Science em Riscos
 
-Agente inteligente de preparação técnica construído com o **Google ADK (Python)** e arquitetura de skills para candidatos a vagas de **Data Scientist I / Analista de Dados no setor de Riscos Financeiros e Projeções** (inspirado no perfil de bancos como o Bradesco).
+Agente inteligente de preparação técnica construído com o **Google ADK (Python)** e arquitetura de skills para candidatos a vagas de **Data Scientist I / Analista de Dados no setor de Riscos Financeiros e Projeções** (inspirado no perfil das principais instituições bancárias do país).
 
 O agente atua como um Tech Lead e recrutador, oferecendo trilhas separadas de **SQL** e **Python**, testes rápidos de aquecimento, desafios de **Caça ao Bug**, eventos regulatórios do **BACEN** e sabatinas com **Pergunta Invertida**. O progresso é registrado localmente com o **EnvironmentToolset**.
 

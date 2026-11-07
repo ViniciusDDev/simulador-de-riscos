@@ -27,7 +27,7 @@ export const ADK_PROJECT_FILES: AdkFile[] = [
 
 ## 🎯 Sobre o Projeto
 
-O **Simulador Agêntico de Riscos Financeiros** é uma aplicação interativa concebida para transpor o abismo entre o aprendizado acadêmico/teórico de Ciência de Dados e as exigências reais de uma mesa de **Risco de Crédito e Ferramentas de Projeções** de instituições financeiras (como Bradesco, Itaú, Nubank e cooperativas de crédito).
+O **Simulador Agêntico de Riscos Financeiros** é uma aplicação interativa concebida para transpor o abismo entre o aprendizado acadêmico/teórico de Ciência de Dados e as exigências reais de uma mesa de **Risco de Crédito e Ferramentas de Projeções** de instituições financeiras (grandes bancos múltiplos, fintechs de crédito e cooperativas financeiras).
 
 Em vez de notebooks estáticos com dados sintéticos genéricos, a aplicação coloca o usuário em uma jornada imersiva com **31 desafios estruturados**, submetidos à avaliação em tempo real por agentes especializados de inteligência artificial.
 
