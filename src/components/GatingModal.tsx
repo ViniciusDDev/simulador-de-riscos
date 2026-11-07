@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Sliders, UserCheck, Sparkles, Zap, Bug, Crown } from 'lucide-react';
+import { X, CheckCircle2, Sliders, UserCheck, Sparkles, Zap, Bug, Crown, RotateCcw, AlertTriangle } from 'lucide-react';
 import { WORLDS } from '../data/challenges';
 
 export interface UserConfig {
@@ -18,6 +18,7 @@ interface GatingModalProps {
   config: UserConfig;
   onSaveConfig: (newConfig: UserConfig) => void;
   onOpenWarmup?: () => void;
+  onResetProgress?: () => void;
 }
 
 export const GatingModal: React.FC<GatingModalProps> = ({
@@ -26,11 +27,13 @@ export const GatingModal: React.FC<GatingModalProps> = ({
   config,
   onSaveConfig,
   onOpenWarmup,
+  onResetProgress,
 }) => {
   const [worldId, setWorldId] = useState(config.worldId);
   const [experienceLevel, setExperienceLevel] = useState(config.experienceLevel);
   const [interviewerPersona, setInterviewerPersona] = useState(config.interviewerPersona);
   const [seniorTokensEnabled, setSeniorTokensEnabled] = useState(config.seniorTokensEnabled);
+  const [confirmReset, setConfirmReset] = useState(false);
 
   if (!isOpen) return null;
 
@@ -245,6 +248,65 @@ export const GatingModal: React.FC<GatingModalProps> = ({
               </div>
             </div>
           </div>
+
+          {/* Zona de Gerenciamento de Progresso (Zerar XP & Tokens) */}
+          {onResetProgress && (
+            <div className="pt-4 border-t border-slate-800">
+              <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
+                    <RotateCcw className="w-4 h-4 text-slate-400" />
+                    <span>Zerar Progresso & Pontuação (Novo Início)</span>
+                  </div>
+                  {!confirmReset ? (
+                    <button
+                      type="button"
+                      onClick={() => setConfirmReset(true)}
+                      className="px-3 py-1.5 text-xs font-medium text-rose-400 hover:text-rose-300 bg-rose-950/30 hover:bg-rose-950/60 border border-rose-800/40 rounded-lg transition-colors cursor-pointer"
+                    >
+                      Zerar Tokens e XP
+                    </button>
+                  ) : null}
+                </div>
+
+                {confirmReset ? (
+                  <div className="p-3 rounded-lg bg-rose-950/40 border border-rose-800/60 space-y-2.5 animate-fade-in">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-rose-300">
+                      <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
+                      <span>Confirmar reinicialização?</span>
+                    </div>
+                    <p className="text-[11px] text-slate-300 leading-relaxed">
+                      Seus Tokens e XP voltarão para 0, e os desafios avançados e Bosses serão travados novamente para você recomeçar sua trilha do zero.
+                    </p>
+                    <div className="flex items-center gap-2 pt-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onResetProgress();
+                          setConfirmReset(false);
+                          onClose();
+                        }}
+                        className="px-3 py-1.5 text-xs font-semibold text-white bg-rose-600 hover:bg-rose-500 rounded-lg transition-colors cursor-pointer shadow-sm"
+                      >
+                        Sim, Zerar Tudo
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setConfirmReset(false)}
+                        className="px-3 py-1.5 text-xs text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-slate-500 leading-relaxed">
+                    Seu progresso é gravado automaticamente a cada desafio concluído. Use o botão acima apenas se desejar reiniciar toda a pontuação e travas do zero.
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Footer */}

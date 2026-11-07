@@ -38,20 +38,27 @@ export default function App() {
   const [isGatingOpen, setIsGatingOpen] = useState(false);
   const [isWarmupOpen, setIsWarmupOpen] = useState(false);
 
-  // RPG State & Gamification
+  // RPG State & Gamification: Progress is preserved across sessions and reloads
   const [xp, setXp] = useState<number>(() => {
     const saved = localStorage.getItem('simulador_riscos_xp');
-    return saved ? parseInt(saved, 10) : 150;
+    return saved !== null ? parseInt(saved, 10) : 0;
   });
 
   const [tokens, setTokens] = useState<number>(() => {
     const saved = localStorage.getItem('simulador_riscos_tokens');
-    return saved ? parseInt(saved, 10) : 50;
+    return saved !== null ? parseInt(saved, 10) : 0;
   });
 
   const [completedChallengeIds, setCompletedChallengeIds] = useState<string[]>(() => {
     const saved = localStorage.getItem('simulador_riscos_completed');
-    return saved ? JSON.parse(saved) : [];
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        return [];
+      }
+    }
+    return [];
   });
 
   const [attributes, setAttributes] = useState(() => {
@@ -62,11 +69,11 @@ export default function App() {
       } catch (e) {}
     }
     return {
-      sqlFinanceiro: 45,
-      regressaoLogistica: 40,
-      metricasValidacao: 50,
-      visaoNegocio: 42,
-      comunicacaoExecutiva: 48,
+      sqlFinanceiro: 0,
+      regressaoLogistica: 0,
+      metricasValidacao: 0,
+      visaoNegocio: 0,
+      comunicacaoExecutiva: 0,
     };
   });
 
@@ -103,10 +110,33 @@ export default function App() {
     if (currentXp >= 1500) return 'Hire-Ready Data Scientist I';
     if (currentXp >= 900) return 'Nível 3: Modelador de Crédito';
     if (currentXp >= 400) return 'Nível 2: Analista Júnior I';
-    return 'Nível 1: Estagiário de Riscos';
+    return 'Nível 1: Aspirante a Riscos';
   };
 
   const levelName = getLevelName(xp);
+
+  const handleResetProgress = () => {
+    setXp(0);
+    setTokens(0);
+    setCompletedChallengeIds([]);
+    setAttributes({
+      sqlFinanceiro: 0,
+      regressaoLogistica: 0,
+      metricasValidacao: 0,
+      visaoNegocio: 0,
+      comunicacaoExecutiva: 0,
+    });
+    localStorage.setItem('simulador_riscos_xp', '0');
+    localStorage.setItem('simulador_riscos_tokens', '0');
+    localStorage.setItem('simulador_riscos_completed', '[]');
+    localStorage.setItem('simulador_riscos_attributes', JSON.stringify({
+      sqlFinanceiro: 0,
+      regressaoLogistica: 0,
+      metricasValidacao: 0,
+      visaoNegocio: 0,
+      comunicacaoExecutiva: 0,
+    }));
+  };
 
   const handleUpdateXpAndTokens = (xpDelta: number, tokenDelta: number) => {
     setXp((prev) => Math.max(0, prev + xpDelta));
@@ -224,6 +254,7 @@ export default function App() {
         config={userConfig}
         onSaveConfig={handleSaveConfig}
         onOpenWarmup={() => setIsWarmupOpen(true)}
+        onResetProgress={handleResetProgress}
       />
 
       <WarmupModal
