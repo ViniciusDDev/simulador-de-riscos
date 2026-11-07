@@ -1,0 +1,7 @@
+{
+  "name": "Simulador Agêntico de Entrevistas - Riscos & Data Science",
+  "description": "Plataforma agêntica gamificada para preparação de entrevistas e testes práticos de Ciência e Análise de Dados em Riscos Financeiros e Projeções.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
